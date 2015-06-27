@@ -35,8 +35,9 @@
 
 .snake{
 	background-color: black;
+	color: black;
 }
 
-.board{
+.empty-board{
 	background-color: white;
 }

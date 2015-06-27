@@ -14,8 +14,9 @@ var board = (function() {
       _boardArray[x] = [];
       html_string += '<div class="row">'
 
-      for (var y = 0; y < _sizeX; y++) {
-        html_string += '<div class=\'board-square board\' id=\'b_' + x + '_' + y + '\'></div>';
+      for (var y = 0; y < _sizeY; y++) {
+        html_string += '<div class=\'board-square empty-board\' id=' + 
+                        arrayToDivID(x,y) +  '></div>';
         _boardArray[x][y] = ' ';
       }
 
@@ -27,8 +28,25 @@ var board = (function() {
 
   };
 
+  var addToBoard = function(x, y, cssClass) {
+    _cssClass = String(cssClass);
+    _boardArray[x][y] =  _cssClass;
+    $square = $('#' + arrayToDivID(x,y));
+
+    if($square) {
+      $square.addClass(_cssClass);
+      $square.removeClass('empty-board');
+    }
+
+  };
+
+  var arrayToDivID = function(x, y) {
+    return 'b_' + x + '_' + y;
+  };
+
   return {
     init: init,
+    addToBoard: addToBoard,
   };
 
 })();
@@ -45,8 +63,28 @@ var snake = (function() {
     'down': 2,
     'left': 3,
   }
+
+  const snakeClass = 'snake';
   var _direction = 1;
   var _body = [];
+  var _board = null;
+
+  var init = function(board) {
+    _board = board;
+    if(board) {
+      _body.push([_head.x, _head.y])
+      drawSnake();
+    }
+  };
+
+
+  var drawSegment = function(segment) {
+    _board.addToBoard(segment[0], segment[1], snakeClass);
+  };
+
+  var drawSnake = function() {
+    _body.forEach(drawSegment);
+  };
 
   var changeDirection = function(direction) {
     if(directions[direction]) {
@@ -55,6 +93,7 @@ var snake = (function() {
   };
 
   return {
+    init: init,
     changeDirection: changeDirection,
   };
 
@@ -64,4 +103,5 @@ var snake = (function() {
 
 $(document).ready(function() {
   board.init();
+  snake.init(board);
 });
