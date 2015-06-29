@@ -4,6 +4,11 @@
 	padding: 0;
 }
 
+strong{
+	font-size: 1.2em;
+}
+
+/* board */
 .container{
 	min-width: 400px;
 	max-width: 800px;
@@ -19,6 +24,59 @@
 	display: inline-block;
 	padding: 0;
 }
+
+/* status bar */
+#status{
+	margin: 10px 0;
+	width: 300px;
+}
+#info{
+	padding: 10px;
+	display: inline-block;
+	float: right;
+	width: 300px;	
+	height: 400px;
+}
+#game-over{
+	font-size: 2em;
+	color: #dd0000;
+	font-weight: bold;
+	height: 2em;
+}
+.description{
+	border-radius: 5px;
+	padding: 10px;
+	clear: both;
+	background-color: #f4f4f4;
+}
+
+#reset {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border: none;
+  margin: 10px 0;
+}
+
+.warn{
+	background: #980000;
+}
+
+.normal-btn{
+	background: #999999;
+}
+
+#reset:hover {
+  background: #a80000;
+  text-decoration: none;
+}
+
+/* board pieces */
 .board-square{
 	width: 2.5em;
 	height: 2.5em;
@@ -29,8 +87,8 @@
 	border-color: #eee;
 }
 
-.row{
-
+.food{
+	background-color: #dddd00;
 }
 
 .snake{

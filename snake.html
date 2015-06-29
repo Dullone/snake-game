@@ -8,6 +8,25 @@
 	<div class="container">
 		<div id="board-container">
 		</div>
+		<div id="info">
+			<div id="status">Score: <span id="score">0</span></div>
+			<p id="game-over"></p>
+			<h4>Game rules:</h4>
+			<p class="description">
+				For movement keys see below the board.<br/>
+				<br/>
+				Move snake around to eat the yellow food.  Each food item eaten will grow the snake by one.
+				If you hit a wall or yourself, its game over!  You get 10 points for each food eaten.  
+				The game moves faster the more you eat!
+			</p>
+			<button type="button" class="normal-btn" id="reset">Restart game</button>
+		</div>
+		<div id="game-instructions">
+			<strong>w</strong> - move up |
+			<strong>a</strong> - move left |
+			<strong>s</strong> - move down |
+			<strong>d</strong> - move right
+		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
