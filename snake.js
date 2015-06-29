@@ -1,3 +1,9 @@
+/*********************************
+* Author: Rory
+* github: https://github.com/Dullone/snake-game
+*
+*********************************/
+
 var board = (function() {
   const _sizeX = 40;
   const _sizeY = 40;
