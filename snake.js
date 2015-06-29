@@ -226,8 +226,9 @@ var snake = (function() {
 
   var hitSelfCheck = function(loc){
     if(board.getObjectAtLocation(loc) === snakeClass){
-      return false;
+      return true;
     }
+    return false;
   };
 
   var removeLastSegment = function() {
@@ -374,6 +375,7 @@ var game = function() {
     _board.removeFromBoard(_foodLocation, _cssFood);
     _foodLocation = null;
     _score += 10;
+    updateScore();
     speedUpGame();
   };
 
