@@ -76,6 +76,12 @@ strong{
   text-decoration: none;
 }
 
+#game-instructions{
+	display: inline-block;
+	min-width: 40em;
+	clear: both;
+}
+
 /* board pieces */
 .board-square{
 	width: 2.5em;
