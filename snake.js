@@ -178,15 +178,15 @@ var snake = (function() {
 
   var changeDirection = function(direction) {
     var _oldDirection = _direction;
+    //if one of the valid four directions
     if(directions[direction]) {
       _direction = directions[direction];
     }
 
     //don't alow a  180 degree turn
-    moveLocation = [_body[0][0] + _direction[0], _body[0][1] + _direction[1]]
+    var moveLocation = [_body[0][0] + _direction[0], _body[0][1] + _direction[1]]
     if(_body.length > 1 && moveLocation[0] === _body[1][0] && 
                               moveLocation[1] === _body[1][1]){
-      console.log('invalid move');
       _direction = _oldDirection;
     }
   };
@@ -195,14 +195,12 @@ var snake = (function() {
     //add segement in direction currently pointed
     var new_head = nextMove();
     if(hitSelfCheck(new_head)){
-
       _dead = true;
       return;
     };
 
     var ate = foodCheck(new_head)
     if(ate) {
-      console.log('ate food');
       game.eatFood();
     }
     //move snake forward one
@@ -223,9 +221,7 @@ var snake = (function() {
 
   //position where we are pointed and will move to next tick
   var nextMove = function() {
-    moveLocation = [_body[0][0] + _direction[0], _body[0][1] + _direction[1]];
-    
-    return moveLocation;
+    return [_body[0][0] + _direction[0], _body[0][1] + _direction[1]];
   };
 
   var hitSelfCheck = function(loc){
@@ -235,13 +231,11 @@ var snake = (function() {
   };
 
   var removeLastSegment = function() {
-    var _bod = _body.pop();
-    _board.removeFromBoard(_bod, snakeClass);
+    _board.removeFromBoard(_body.pop(), snakeClass);
   };
 
   var tick = function() {
-    //check if hit self
-    //check if hit  wall, game over
+    //check if hit  wall
     if(wallHit()) {
       _dead = true;
       return;
@@ -393,9 +387,6 @@ var game = function() {
       _tick_interval = min_interval;
     }
   };
-
-  //eat food if snake and head collide
-  //speed up when food eaten
 
   return {
     init: init,
